@@ -3,7 +3,7 @@ FROM golang:1.8.3-alpine
 COPY cmd/freegeoip/public /var/www
 
 ADD . /go/src/github.com/fiorix/freegeoip
-RUN cd /go/src/github.com/fiorix/freegeoip/cmd/freegeoip && go get && go install
+RUN apk --no-cache add git && cd /go/src/github.com/fiorix/freegeoip/cmd/freegeoip && go get && go install
 
 ENTRYPOINT ["/go/bin/freegeoip"]
 
